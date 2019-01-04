@@ -1,0 +1,47 @@
+<section class="home-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+
+                <h1 class="app-title">The-Burger-Bar!</h1>
+
+                <input type="text" rows="4" id="type-burger">
+                </input>
+                <br>
+                <input type="submit" id="submit-burger">
+                <p>ORDER THE BURGER YOU ARE CRAVING!</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="burgers">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3 burger-items">
+                
+                <h2 class="burger-titles">Freshly Prepared Burgers!</h2>
+
+                <ul>
+                    {{#each burgers}}
+                        {{#unless devoured}}
+                        {{> burgers/burger-block devoured=false}}
+                        {{/unless}}
+                    {{/each}}
+                </ul>
+
+                <h2 class="burger-titles">Burgers Eaten</h2>
+
+                <ul>
+                    {{#each burgers}}
+                        {{#if devoured}}
+                        {{> burgers/burger-block devoured=true}}
+                        {{/if}}
+                    {{/each}}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>

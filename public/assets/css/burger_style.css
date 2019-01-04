@@ -1,0 +1,83 @@
+*{
+    margin: 20px 0 0 0;
+    border-radius: 10px;
+    font-family: 'Titan One', cursive;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/burgerBG.jpg') no-repeat center;
+    background-size: cover;
+    text-align: center;
+    color:rgb(159, 27, 27);
+}
+
+.app-title{
+    font-size: 50px;
+}
+
+.burger-titles{
+    background-color: lightyellow;
+    padding: 10px;
+}
+
+.home-body{
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+[type=text]{
+    width: 280px;
+    margin: 20px 0;
+    padding: 3px;
+}
+[type=submit]{
+    margin-bottom: 20px;
+    color: green;
+    background-color: seashell;
+}
+
+button{
+    border-radius: 10px;
+    color: green;
+    background-color: seashell;
+}
+  
+
+
+/******** media queries ******/
+/********** xs < 768 *********/
+@media screen and (max-width: 767px) { 
+    body, .burger-titles { font-size: 0.7em; 
+}
+.app-title {
+    font-size: 2.25em;
+}
+
+/* sm */ 
+@media screen and (min-width: 768px) {
+    body, .burger-titles { font-size: 0.8em; 
+}
+.app-title {
+    font-size: 2.5em;
+}
+
+/* md */ 
+@media screen and (min-width: 992px) { 
+    body, .burger-titles { font-size: 0.9em; 
+} 
+.app-title {
+    font-size: 2.75em;
+}
+ 
+/* lg */ 
+@media screen and (min-width: 1200px) { 
+    body, .burger-titles { font-size: 1em; 
+}
+.app-title {
+    font-size: 3em;
+}
