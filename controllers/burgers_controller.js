@@ -8,56 +8,81 @@ var router = express.Router();
 // import burger.js to use database funvctions
 var burger = require('../models/burger.js');
 
-// defining paths
-router.get("/", function(req, res) {
-    burger.selectAll(function(data){
+
+var db = require("../models");
+// db.sequelize.sync();
+
+// defining paths to GET all burgers
+router.get("/", function (req, res) {
+
+    var query = {};
+    if (req.query.customer_id) {
+        query.CustomerId = req.query.customer_id;
+    }
+    db.Burger.findAll({
+        where: query,
+        include: [db.Customer]
+    }).then(function (data) {
         var hbObject = {
-            burgers : data
+            burgers: data
         };
-        // console.log(' GET ROUTE :: ', hbObject);
         res.render("index", hbObject);
     });
 });
 
-router.post("/api/burgers", function(req, res) {
+// defining paths to POST new burger
+router.post("/api/burgers", function (req, res) {
     console.log("request.body", req.body);
 
-    burger.insertOne(req.body.burger_name, false, function(result){
-        console.log('result :: ', result);
-        res.json({ id: result.insertId });
+    db.Burger.create({
+        burger_name: req.body.burger_name
+    }).then(function (data) {
+        res.redirect("/burgers");
     });
 });
 
-router.delete("/api/burgers/:id", function(req, res) {
-    var condition = 'id = ' + req.params.id; 
-    connection.query("DELETE FROM burgers WHERE id = ?", [req.params.id], function(err, result) {
-      if (err) {
-        // if error, send generic server failure
-        return res.status(500).end();
-      }
-      else if (result.affectedRows === 0) {
-        // if no rows were changed, then the ID must not exist, so 404
-        return res.status(404).end();
-      }
-      res.status(200).end();
-  
-    });
-});
+// update input with customer name and devoured
+router.delete("/api/burgers/:id", function (req, res) {
+    var burgerEaten = req.body.devoured;
+    var burgerId = req.params.id;
+    //creating a customer from user input
+    if (req.body.customer_name === "") {
+        console.log("Please enter Customer name");
+    } else {
+        db.Customer.create({
+            name: req.body.customer_name
+        }).then(function (data) {
+            //updating the burger table with the new customer input
+            db.Burger.update({
+                devoured: burgerEaten,
+                CustomerId: data.id
+            }, {
+                    where: {
+                        id: burgerId
+                    },
+                    include: [db.Customer]
 
-router.put("/api/burgers/:id", function(req, res) {
-    var condition = "id = " + req.params.id + ';';
-  
-    console.log("condition", condition);
-  
-    burger.updateOne('devoured = true', condition, function(result) {
-      if (result.changedRows == 0) {
-        // if no rows were changed, then the ID must not exist, so 404
-        return res.status(404).end();
-      } else {
-        res.status(200).end();
-      }
-    });
-});
+                }).then(function (data) {
+                    console.log(data);
+                    res.redirect("/burgers");
+                });
+        });
+    };
+
+// router.put("/api/burgers/:id", function (req, res) {
+//     var condition = "id = " + req.params.id + ';';
+
+//     console.log("condition", condition);
+
+//     burger.updateOne('devoured = true', condition, function (result) {
+//         if (result.changedRows == 0) {
+//             // if no rows were changed, then the ID must not exist, so 404
+//             return res.status(404).end();
+//         } else {
+//             res.status(200).end();
+//         }
+//     });
+// });
 
 // exporting router.
 module.exports = router;

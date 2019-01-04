@@ -10,6 +10,8 @@ var app = express();
 
 var PORT = process.env.PORT || 8080;
 
+var db = require("./models");
+
 
 // set default directory to public
 app.use(express.static("public"));
@@ -37,6 +39,9 @@ app.use(routes);
 
 
 // sets app to listen at specified port
-app.listen(PORT, function() {
-    console.log("Server listening on: http://localhost:" + PORT);
+db.sequelize.sync().then(function(){
+    app.listen(port, function(){
+        console.log("App listening on PORT " + port);
+    });
 });
+

@@ -1,30 +1,17 @@
-// require MySQL
-var mysql = require("mysql");
+// dependencies
+var Sequelize = require("sequelize");
 
-// setting up specific connection for heroku
-var connection;
-
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else
-  connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    port: 3306,
-    password: "esperAnza#88",
-    database: "burgers_db"
-  });
-
-// mysql://hgj6br7gjurrluws:qb7nx85zha4ons40@nj5rh9gto1v5n05t.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/xkpvztxr6wp5tkjv
-
-// establish connection
-connection.connect(function (err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
+// creates mySQL connection using Sequelize
+var sequelize = new Sequelize("burgers_db", "root", "esperAnza#88", {
+  host: "localhost",
+  port: 3306,
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
   }
-  console.log("connected as id " + connection.threadId);
 });
 
-// export connection
-module.exports = connection;
+// Exports the connection for other files to use
+module.exports = sequelize;

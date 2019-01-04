@@ -1,26 +1,17 @@
-var orm = require("../config/orm.js");
+var Sequelize = require("sequelize");
 
-var burger = {
-    selectAll: function(cb){
-        orm.selectAll('burgers', function(res){
-            cb(res);
-        });
-    },
-    insertOne: function(val_one, val_two, cb){
-        orm.insertOne('burgers', 'burger_name', 'devoured', val_one, val_two, function(res){
-            cb(res);
-        });
-    },
-    updateOne: function(objColVals, condition, cb){
-        orm.updateOne('burgers', objColVals, condition, function(res){
-            cb(res);
-        });
-    },
-    deleteOne: function(conditionVal, cb){
-        orm.deleteOne('burgers', 'id', conditionVal, function(res){
-          cb(res);
-        });
-      }
-}
+var sequelize = require("../config/connection.js");
 
-module.exports = burger;
+var Burgers = sequelize.define("Burgers", {
+
+    burger_name: Sequelize.STRING,
+    devoured: Sequelize.BOOLEAN,
+
+    freezeTableName: true,
+});
+
+// sync with DB
+Burgers.sync();
+
+
+module.exports = Burgers;
