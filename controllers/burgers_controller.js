@@ -45,14 +45,14 @@ router.post("/api/burgers", function (req, res) {
 router.delete("/api/burgers/:id", function (req, res) {
     var burgerEaten = req.body.devoured;
     var burgerId = req.params.id;
-    //creating a customer from user input
+    // creating a customer from user input
     if (req.body.customer_name === "") {
         console.log("Please enter Customer name");
     } else {
         db.Customer.create({
             name: req.body.customer_name
         }).then(function (data) {
-            //updating the burger table with the new customer input
+            // updating the burger table with the new customer input
             db.Burger.update({
                 devoured: burgerEaten,
                 CustomerId: data.id
@@ -69,20 +69,8 @@ router.delete("/api/burgers/:id", function (req, res) {
         });
     };
 
-// router.put("/api/burgers/:id", function (req, res) {
-//     var condition = "id = " + req.params.id + ';';
 
-//     console.log("condition", condition);
-
-//     burger.updateOne('devoured = true', condition, function (result) {
-//         if (result.changedRows == 0) {
-//             // if no rows were changed, then the ID must not exist, so 404
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
+});
 
 // exporting router.
 module.exports = router;

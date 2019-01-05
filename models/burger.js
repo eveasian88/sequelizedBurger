@@ -5,9 +5,7 @@ var sequelize = require("../config/connection.js");
 var Burgers = sequelize.define("Burgers", {
 
     burger_name: Sequelize.STRING,
-    devoured: Sequelize.BOOLEAN,
-
-    freezeTableName: true,
+    devoured: Sequelize.BOOLEAN
 });
 
 // sync with DB

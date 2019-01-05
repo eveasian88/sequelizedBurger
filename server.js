@@ -40,8 +40,8 @@ app.use(routes);
 
 // sets app to listen at specified port
 db.sequelize.sync().then(function(){
-    app.listen(port, function(){
-        console.log("App listening on PORT " + port);
+    app.listen(PORT, function(){
+        console.log("App listening on PORT " + PORT);
     });
 });
 
