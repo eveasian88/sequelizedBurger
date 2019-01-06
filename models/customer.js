@@ -1,15 +1,13 @@
-var Sequelize = require("sequelize");
+module.exports = function (sequelize, DataTypes) {
+    var Customer = sequelize.define("Customer", {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    });
 
-var sequelize = require("../config/connection.js");
-
-var Customer = sequelize.define("Customer", {
-
-    name: Sequelize.STRING,
-    allowNull: false
-});
-
-// sync with DB
-Customer.sync();
-
-
-module.exports = Customer;
+    Customer.associate = function (models) {
+        Customer.hasMany(models.Burger);
+    };
+    return Customer;
+};

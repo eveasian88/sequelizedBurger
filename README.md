@@ -1,6 +1,6 @@
 # sequelizedBurger
 
-[Sequelized-Burger-Bar](https://hidden-hollows-63563.herokuapp.com/) is a Burger Ordering App using Node.js and Express Web Frameworks, Handlebars and Sequelize. Users can custom order their individual burgers in the input field along with their names and then "eat them". The App logs all burgers ordered and eaten. It uses Sequelize and MySQL2 to query and route data to the App and Handlebars to generate the HTML. 
+[Sequelized-Burger-Bar](https://hidden-hollows-63563.herokuapp.com/) is a Burger Ordering App using Node.js and Express Web Frameworks, Handlebars and Sequelize. Users can custom order their individual burgers in the input field along with their names and then "eat it". The App logs all burgers ordered and eaten. It uses Sequelize and MySQL2 to query and route data to the App and Handlebars to generate the HTML. 
  
 
 
@@ -32,4 +32,4 @@
 
 ## Author
 
-- Susye Weng-Reeder - *JavaScript/ Node.js/ Express/ MySQL* - [Susye Weng-Reeder](https://eveasian88.github.io/Professional-Portfolio/ "Susye's Portfolio")
+- Susye Weng-Reeder - *JavaScript/ Node.js/ Express/ MySQL/ Heroku* - [Susye Weng-Reeder](https://eveasian88.github.io/Professional-Portfolio/ "Susye's Portfolio")

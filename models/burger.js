@@ -1,15 +1,21 @@
-var Sequelize = require("sequelize");
+module.exports = function (sequelize, DataTypes) {
+    var Burger = sequelize.define("Burger", {
+        burger_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        devoured: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
+    });
 
-var sequelize = require("../config/connection.js");
-
-var Burgers = sequelize.define("Burgers", {
-
-    burger_name: Sequelize.STRING,
-    devoured: Sequelize.BOOLEAN
-});
-
-// sync with DB
-Burgers.sync();
-
-
-module.exports = Burgers;
+    Burger.associate = function (models) {
+        Burger.belongsTo(models.Customer, {
+            // foreignKey: {
+            //     allowNull: false
+            // }
+        });
+    };
+    return Burger;
+};
