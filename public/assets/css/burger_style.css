@@ -5,9 +5,9 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    background: url('../images/burgerBG.jpg') no-repeat center;
+    /* width: 100vw;
+    height: 100vh; */
+    background: url('../images/burgerBG.jpg') no-repeat center fixed;
     background-size: cover;
     text-align: center;
     color:rgb(159, 27, 27);
@@ -46,8 +46,10 @@ button{
     color: green;
     background-color: seashell;
 }
-  
 
+p {
+    color: black;
+}
 
 /******** media queries ******/
 /********** xs < 768 *********/
