@@ -7,6 +7,11 @@
 
                 <input type="text" rows="4" id="type-burger">
                 </input>
+
+                {{!-- post test here --}}
+                <form method="POST" action="/burgers/create"></form>
+                {{!-- post test ends --}}
+
                 <br>
                 <input type="submit" id="submit-burger">
                 <p>ORDER THE BURGER YOU ARE CRAVING!</p>
@@ -20,26 +25,29 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 offset-sm-3 burger-items">
-                
+
                 <h2 class="burger-titles">Freshly Prepared Burgers!</h2>
 
                 <ul>
                     {{#each burgers}}
-                        {{#unless devoured}}
-                        {{> burgers/burger-block devoured=false}}
-                        {{/unless}}
+                    {{#unless devoured}}
+                    {{> burgers/burger-block devoured=false}}
+                    {{/unless}}
                     {{/each}}
                 </ul>
+
+                {{!-- test begins --}}
+                <div class="col-md-8 col-sm-12">
+                    {{this.id}}. {{this.burger_name}}
+                </div>
+
+                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                </form>
+                {{!-- test ends --}}
 
                 <h2 class="burger-titles">Burgers Eaten</h2>
 
-                <ul>
-                    {{#each burgers}}
-                        {{#if devoured}}
-                        {{> burgers/burger-block devoured=true}}
-                        {{/if}}
-                    {{/each}}
-                </ul>
+
 
             </div>
         </div>

@@ -24,7 +24,7 @@ router.get("/", function (req, res) {
         include: [db.Customer]
     }).then(function (data) {
         var hbObject = {
-            burgers: data
+            burger: data
         };
         res.render("index", hbObject);
     });
