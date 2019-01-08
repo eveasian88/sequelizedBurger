@@ -4,13 +4,16 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 140]
+                len: [1, 111]
               }
         }
     });
 
     Customer.associate = function (models) {
-        Customer.hasMany(models.Burger);
+        Customer.hasMany(models.Burger, {
+            onDelete: "cascade"
+        });
     };
+
     return Customer;
 };

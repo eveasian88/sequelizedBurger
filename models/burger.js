@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 140]
+                len: [1, 111]
               }
         },
         devoured: {
@@ -15,7 +15,9 @@ module.exports = function (sequelize, DataTypes) {
 
     Burger.associate = function (models) {
         Burger.belongsTo(models.Customer, {
-           
+           foreignKey: {
+               allowNull: false
+           }
         });
     };
     return Burger;
