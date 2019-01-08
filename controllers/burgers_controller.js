@@ -12,6 +12,7 @@ var burger = require('../models/burger.js');
 var db = require("../models");
 // db.sequelize.sync();
 
+module.exports =function(router) {
 // defining paths to GET all burgers
 router.get("/", function (req, res) {
 
@@ -100,5 +101,6 @@ router.post("/burgers/create", function (req, res) {
 
     });
 
-    // exporting router.
+    // // exporting router.
     module.exports = router;
+}
