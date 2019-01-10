@@ -36,6 +36,7 @@ var routes = require("./controllers/burgers_controller.js");
 
 // tell express to use routes
 app.use(routes);
+// require("./controllers/burgers_controller.js")(app);
 
 
 // sets app to listen at specified port

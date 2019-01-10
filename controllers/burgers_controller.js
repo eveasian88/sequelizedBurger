@@ -1,44 +1,33 @@
-// require express, path, and burger module
-var express = require('express');
-var path = require('path');
+var express = require("express");
 
-// set up express router
-// var router = express.Router();
-
-// import burger.js to use database functions
-var burger = require('../models/burger.js');
-
+var router = express.Router();
 
 var db = require("../models");
-// db.sequelize.sync();
 
-module.exports =function(app) {
-// defining paths to GET all burgers
-app.get("/", function (req, res) {
 
-    // var query = {};
-    // if (req.query.customer_id) {
-    //     query.CustomerId = req.query.customer_id;
-    // }
-    db.Burger.findAll({
-        // where: query,
-        include: [db.Customer]
-    }).then(function (dbBurger) {
-        res.json("dbBurger");
+// module.exports = function (router) {
+    // defining paths to GET all burgers
+    router.get("/", function (req, res) {
+
+        db.Burger.findAll({
+            // where: query,
+            // include: [db.Customer]
+        }).then(function (dbBurger) {
+            res.json("dbBurger");
+        });
     });
-});
 
-// defining paths to POST new burger
-app.post("/burgers/create", function (req, res) {
+    // defining paths to POST new burger
+    router.post("/burgers/create", function (req, res) {
 
-    db.Burger.create(req.body).then(function(dbBurger) {
-        res.json(dbBurger);
-      });
+        db.Burger.create(req.body).then(function (dbBurger) {
+            res.json(dbBurger);
+        });
     });
 
 
     // update input with customer name and devoured
-    app.delete("/api/burgers/:id", function (req, res) {
+    router.delete("/api/burgers/:id", function (req, res) {
         var burgerEaten = req.body.devoured;
         var burgerId = req.params.id;
         // creating a customer from user input
@@ -68,6 +57,5 @@ app.post("/burgers/create", function (req, res) {
 
     });
 
-    // // // exporting router
-    // module.exports = router;
-}
+    // exporting router
+    module.exports = router;
