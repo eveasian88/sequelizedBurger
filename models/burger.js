@@ -23,4 +23,4 @@ module.exports = function (sequelize, DataTypes) {
     return Burger;
 };
 
-// sequelize model:generate --name bike --attributes name:string,customer:string
+// sequelize model:generate --name burger --attributes burger:string,customer:string
