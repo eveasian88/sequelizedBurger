@@ -10,10 +10,9 @@ var db = require("../models");
     router.get("/", function (req, res) {
 
         db.Burger.findAll({
-            // where: query,
             // include: [db.Customer]
         }).then(function (dbBurger) {
-            res.json("dbBurger");
+            res.json(dbBurger);
         });
     });
 
