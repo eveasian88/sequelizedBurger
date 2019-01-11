@@ -28,20 +28,20 @@
 
                 <h2 class="burger-titles">Freshly Prepared Burgers!</h2>
 
+ {{!-- test begins --}}
+                <div class="col-md-8 col-sm-12">
                 <ul>
                     {{#each burgers}}
                     {{#unless devoured}}
+                   
                     {{> burgers/burger-block devoured=false}}
                     {{/unless}}
                     {{/each}}
                 </ul>
-
-                {{!-- test begins --}}
-                <div class="col-md-8 col-sm-12">
-                    {{this.id}}. {{this.burger_name}}
+    
                 </div>
 
-                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <form action="/burgers"method="POST">
                 </form>
                 {{!-- test ends --}}
 
