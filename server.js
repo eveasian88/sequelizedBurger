@@ -39,7 +39,6 @@ var htmlRoutes = require("./routes/htmlRoutes");
 app.use("/", htmlRoutes);
 
 
-
 // sets app to listen at specified port
 db.sequelize.sync().then(function(){
     app.listen(PORT, function(){
