@@ -38,6 +38,9 @@ var routes = require("./controllers/burgers_controller.js");
 var htmlRoutes = require("./routes/htmlRoutes");
 app.use("/", htmlRoutes);
 
+var apiRoutes = require("./routes/htmlRoutes");
+app.use("/", apiRoutes);
+
 
 // sets app to listen at specified port
 db.sequelize.sync().then(function(){

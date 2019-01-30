@@ -7,21 +7,28 @@ $(document).ready(function () {
       devoured: false
     }
 
-    // console.log("burger", newBurger);
+    console.log("burger", newBurger);
 
-    fetch('/api/burgers', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBurger)
-    }).then(
-      function () {
-        console.log('created new burger');
 
-        location.reload();
-      });
-  })
+    //LOOK AT SEQUELIZE 01 ACTIVITY AUTHOR.JS 
+    // A function for creating an burger. Calls get burgers upon completion
+    function upsertBurger(burgerData) {
+      $.post("/api/burgers", burgerData)
+        .then(getburgers);
+    }
+  //   fetch('/api/burgers', {
+  //     method: 'POST',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newBurger)
+  //   }).then(
+  //     function () {
+  //       console.log('created new burger');
+  //       console.log(newBurger)
+  //       // location.reload();
+  //     });
+  // })
 
   $('.devour-btn').on('click', function (event) {
     var id = $(this).data('id');

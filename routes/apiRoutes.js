@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
+var db = require("../models");
 
 
 router.get("/api/burgers", function (req, res) {
