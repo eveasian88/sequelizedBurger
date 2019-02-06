@@ -12,7 +12,7 @@
 - Run "ctrl + c" to exit mode
 
 
-![burger](public/assets/images/burgerBar.gif "server.js")
+![burger](public/assets/images/burgerBar.gif "burger")
 
 
 
