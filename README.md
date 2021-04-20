@@ -37,4 +37,4 @@
 
 ## Author
 
-- Susye Weng-Reeder - *JavaScript/ Node.js/ Express/ MySQL/ Sequelize/ Heroku* - [Susye Weng-Reeder](https://eveasian88.github.io/Professional-Portfolio/ "Susye's Portfolio")
+- Susye Weng-Reeder - *JavaScript/ Node.js/ Express/ MySQL/ Sequelize/ Heroku* - [Susye Weng-Reeder](https://www.weng-reeder.com/ "Susye's Portfolio")
